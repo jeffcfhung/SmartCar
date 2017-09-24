@@ -23,7 +23,7 @@ module.exports = StyleSheet.create({
         color       : '#fff'
     },
     circle: {
-        backgroundColor     : '#8abc9c',
+        backgroundColor     : '#8a9c3c',
         width               : CIRCLE_RADIUS*2,
         height              : CIRCLE_RADIUS*2,
         borderRadius        : CIRCLE_RADIUS

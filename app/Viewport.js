@@ -16,11 +16,14 @@ export default class Viewport extends Component {
     constructor(props) {
         super(props);
 
-        this.steerController = new SteerController();
-        this.steerController.setName('Steer Control');
-        
-        this.cameraController = new CameraController();
-        this.cameraController.setName('Camera Control');
+        this.steerController = SteerController.Builder()
+            .withName('Steer Control')
+            .build();
+
+        this.cameraController = CameraController.Builder()
+            .withName('Camera Control')
+            .build();
+
         // TODO: Play video
         //CarController.getVideo();
     }
@@ -34,23 +37,3 @@ export default class Viewport extends Component {
         );
     }
 }
-/*
-let CIRCLE_RADIUS = 36;
-let CIRCLE_OFFSET_Y = 90;
-let Window = Dimensions.get('window');
-let styles = StyleSheet.create({
-    mainContainer: {
-        flex    : 1
-    },
-    steerContainer: {
-        position    : 'absolute',
-        top         : Window.height/2 - CIRCLE_RADIUS,
-        left        : Window.width/2 - CIRCLE_RADIUS,
-    },
-    cameraContainer: {
-        position    : 'absolute',
-        top         : Window.height/2 - CIRCLE_RADIUS - CIRCLE_OFFSET_Y,
-        left        : Window.width/2 - CIRCLE_RADIUS,
-    },
-});
-*/
