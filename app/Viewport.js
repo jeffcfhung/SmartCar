@@ -7,8 +7,8 @@ import {
     Dimensions
 } from 'react-native'
 
-import SteerController from './components/steer/index';
-import CameraController from './components/camera/index';
+import SteerController from './components/steer';
+import CameraController from './components/camera';
 
 var styles = require('./config/styles');
 
