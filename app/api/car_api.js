@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 
+GLOBAL = require('../lib/globals');
+
 // TODO: Move to web socket
 export default class CarApi extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.baseurl = 'http://localhost:8000';
     }
 
@@ -13,12 +15,23 @@ export default class CarApi extends Component {
 
     sendCommand(cmd) {
         let url = this.baseurl + cmd;
-        console.log('Send: %s', url);
 
-        fetch(url)
+        this.fetchTimeout(1000, fetch(url))
             .then(this._checkStatus)
-            .catch(e => e)
-        }
+            .catch(e => {
+                GLOBAL.CUSTOM_EVENT.setDebugLog(e.toString());
+            })
+    }
+
+    fetchTimeout(ms, promise) {
+        return new Promise(function(resolve, reject) {
+            setTimeout(function() {
+                reject(new Error('Response timeout'));
+            }, ms)
+
+            promise.then(resolve, reject);
+        })
+    }
 
     _checkStatus(response) {
         if (response.status >= 200 && response.status < 300) {
@@ -27,6 +40,8 @@ export default class CarApi extends Component {
         else {
             console.log('[ERROR]' + response.status + ' ' + response.url);
         }
+        // FIXME: Event observers
+        GLOBAL.CUSTOM_EVENT.setDebugLog(response.status + '-' + response.url);
         return response;
     }
 }
