@@ -20,10 +20,11 @@ export default class SteerController extends Controller {
             'turningAngle': '127', // Center
             'updatedTime': new Date().getTime()
         };
+
     }
 
     move(x, y) {
-        let toUpdateTime = 500; // milliseconds
+        let toUpdateTime = 300; // milliseconds
         let now = new Date().getTime();
         // Skip sending api if update in short period to avoid overloading
         if (now - this.apiParameters.updatedTime < toUpdateTime) return;
@@ -58,7 +59,7 @@ export default class SteerController extends Controller {
     }
 
     _changeTurning(x) {
-        let angle = Math.round((x - (-200)) / 400 * 255);
+        let angle = Math.round((x - (-150)) / 300 * 255);
         angle = angle > 255 ? 255 : (angle < 0 ? 0 : angle);
         if (this.apiParameters.turningAngle == angle) return;
 

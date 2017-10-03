@@ -12,6 +12,8 @@ import CarApi from '../../api/car_api'
 import styles from './styles'
 
 export default class Controller extends React.Component {
+    DOUBLE_CLICK_DELAY = 300;
+
     constructor(props) {
         super(props);
         this.state = {
@@ -19,9 +21,11 @@ export default class Controller extends React.Component {
         };
 
         this.api = new CarApi();
-
         this.panResponder = PanResponder.create({
             onStartShouldSetPanResponder: () => true,
+            onPanResponderGrant: (e, gesture) => {
+                this.handleClick(e);
+            },
             onPanResponderMove: (e, gesture) => {
                 this.move(gesture.dx, gesture.dy);
                 Animated.event([null, {
@@ -37,6 +41,22 @@ export default class Controller extends React.Component {
                 ).start();
             }
         });
+    }
+
+    handleClick(e) {
+        const now = new Date().getTime();
+        console.log(now);
+        if (this.lastClick && (now - this.lastClick) < this.DOUBLE_CLICK_DELAY) {
+            delete this.lastClick;
+            this.handleDoubleClick(e);
+        }
+        else {
+            this.lastClick = now;
+        }
+    }
+
+    handleDoubleClick() {
+
     }
 
     render() {

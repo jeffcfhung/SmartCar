@@ -15,6 +15,7 @@ export default class CarApi extends Component {
 
     sendCommand(cmd) {
         let url = this.baseurl + cmd;
+        console.log(url);
 
         this.fetchTimeout(1000, fetch(url))
             .then(this._checkStatus)
@@ -35,7 +36,7 @@ export default class CarApi extends Component {
 
     _checkStatus(response) {
         if (response.status >= 200 && response.status < 300) {
-            //console.log(response.status);
+            console.log(response.status + '-' + response.url);
         }
         else {
             console.log('[ERROR]' + response.status + ' ' + response.url);
