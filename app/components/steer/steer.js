@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import Controller from '../controller';
+import styles from './styles'
 
 export default class SteerController extends Controller {
     FORWARD     = '/motor/forward';
@@ -11,26 +12,22 @@ export default class SteerController extends Controller {
 
     constructor(props) {
         super(props);
-        this.state.styles = require('./styles');
-        // initial state
-        this.state.apiContext = {
+        this.styles = require('./styles');
+        // initial apiParameters
+        this.apiParameters = {
             'speed': '0',
             'direction': this.STOP,
             'turningAngle': '127', // Center
             'updatedTime': new Date().getTime()
-        }
-    }
-
-    static Builder() {
-        return new SteerController();
+        };
     }
 
     move(x, y) {
         let toUpdateTime = 500; // milliseconds
         let now = new Date().getTime();
         // Skip sending api if update in short period to avoid overloading
-        if (now - this.state.updatedTime < toUpdateTime) return;
-        this.state.updatedTime = now;
+        if (now - this.apiParameters.updatedTime < toUpdateTime) return;
+        this.apiParameters.updatedTime = now;
 
         this._changeDirection(y);
         this._changeSpeed(x, y);
@@ -45,27 +42,27 @@ export default class SteerController extends Controller {
 
     _changeDirection(y) {
         let direction = y < 0 ? this.FORWARD : (y > 0 ? this.BACKWARD : this.STOP);
-        if (this.state.apiContext.direction == direction) return;
+        if (this.apiParameters.direction == direction) return;
 
-        this.state.apiContext.direction = direction;
+        this.apiParameters.direction = direction;
         this.api.sendCommand(direction);
     }
 
     _changeSpeed(x, y) {
         let speed = Math.round(Math.sqrt(x*x + y*y));
         speed = speed > 100 ? 100 : (speed < 0 ? 0 : speed);
-        if (this.state.apiContext.speed == speed) return;
+        if (this.apiParameters.speed == speed) return;
 
-        this.state.apiContext.speed = speed;
+        this.apiParameters.speed = speed;
         this.api.sendCommand(this.SET_SPEED + speed);
     }
 
     _changeTurning(x) {
         let angle = Math.round((x - (-200)) / 400 * 255);
         angle = angle > 255 ? 255 : (angle < 0 ? 0 : angle);
-        if (this.state.apiContext.turningAngle == angle) return;
+        if (this.apiParameters.turningAngle == angle) return;
 
-        this.state.apiContext.turningAngle = angle;
+        this.apiParameters.turningAngle = angle;
         this.api.sendCommand(this.TURNING + angle);
     }
 }

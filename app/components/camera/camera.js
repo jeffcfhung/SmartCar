@@ -5,7 +5,7 @@ import Controller from '../controller';
 export default class CameraController extends Controller {
     constructor(props) {
         super(props);
-        this.state.styles = require('./styles');
+        this.styles = require('./styles');
     }
 
     static Builder() {
@@ -14,5 +14,9 @@ export default class CameraController extends Controller {
 
     move(x, y) {
         //console.log('Camera: %s %s', x, y);
+    }
+
+    stop() {
+        
     }
 }

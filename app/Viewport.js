@@ -5,7 +5,8 @@ import {
     PanResponder,
     Animated,
     Dimensions,
-    Image
+    Image,
+    WebView
 } from 'react-native'
 
 GLOBAL = require('./lib/globals');
@@ -14,19 +15,11 @@ import CameraController from './components/camera';
 
 let styles = require('./config/styles');
 
-const testVideo = 'http://192.168.1.77:8000/static/images/smart_car_video.jpg';
+const testVideo = 'http://192.168.1.80:8080/?action=stream';
 
 export default class Viewport extends Component {
     constructor(props) {
         super(props);
-
-        this.steerController = SteerController.Builder()
-            .withName('Steer Control')
-            .build();
-
-        this.cameraController = CameraController.Builder()
-            .withName('Camera Control')
-            .build();
 
         this.state = {
             debugLog: 'Messages',
@@ -53,6 +46,10 @@ export default class Viewport extends Component {
         GLOBAL.CUSTOM_EVENT.ViewPort.setState({debugLog: logs.join('\n')});
     }
 
+    formatHtml() {
+        return ('<html><body><img src="' + testVideo + '" width="100%" style="background-color: white; min-height: 100%; min-width: 100%; position: fixed; top: 0; left: 0;"></body></html>');
+    }
+
     render() {
         return (
             <View style={styles.mainContainer}>
@@ -62,12 +59,15 @@ export default class Viewport extends Component {
                     <Text style={styles.navBarButton}>More</Text>
                 </View>
                 <View style={styles.content}>
-                    <Image
-                      style={styles.video}
-                      source={{uri: testVideo}}
-                    />
-                    {this.steerController.getView()}
-                    {this.cameraController.getView()}
+                    <WebView
+                       style={styles.video}
+                       automaticallyAdjustContentInsets={true}
+                       scalesPageToFit={true}
+                       startInLoadingState={false}
+                       scrollEnabled={false}
+                       source={{html: this.formatHtml(), baseUrl: '/'}} />
+                    <CameraController name='Camera Control' />
+                    <SteerController name='Steer Control' />
                 </View>
                 <View style={styles.tabBar}>
                     <Text style={styles.debugLog}>{this.state.debugLog}</Text>

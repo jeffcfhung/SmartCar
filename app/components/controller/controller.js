@@ -9,13 +9,13 @@ import {
 } from 'react-native'
 
 import CarApi from '../../api/car_api'
+import styles from './styles'
 
 export default class Controller extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             pan: new Animated.ValueXY(),
-            styles: require('./styles')
         };
 
         this.api = new CarApi();
@@ -39,29 +39,12 @@ export default class Controller extends React.Component {
         });
     }
 
-    withName(name) {
-        this._name = name;
-        return this;
-    }
-
-    build() {
-        console.log('build');
-        return this;
-    }
-
-    getPanHandlers() {
-        return this.panResponder.panHandlers;
-    }
-
-    getLayout() {
-        return this.state.pan.getLayout();
-    }
-
-    getView() {
+    render() {
         return (
-            <View style={this.state.styles.container}>
-                <Animated.View {...this.getPanHandlers()} style={[this.getLayout(), this.state.styles.circle]}>
-                    <Text style={this.state.styles.text}>{this._name}</Text>
+            <View style={this.styles.container}>
+                <Animated.View {...this.panResponder.panHandlers}
+                        style={[this.state.pan.getLayout(), this.styles.circle]}>
+                    <Text style={this.styles.text}>{this.props.name}</Text>
                 </Animated.View>
             </View>
         );

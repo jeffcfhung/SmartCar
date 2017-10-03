@@ -6,7 +6,7 @@ GLOBAL = require('../lib/globals');
 export default class CarApi extends Component {
     constructor(props) {
         super(props);
-        this.baseurl = 'http://localhost:8000';
+        this.baseurl = 'http://192.168.1.80:8000';
     }
 
     getImage() {
@@ -40,7 +40,7 @@ export default class CarApi extends Component {
         else {
             console.log('[ERROR]' + response.status + ' ' + response.url);
         }
-        // FIXME: Event observers
+        // FIXME: Change to event observers
         GLOBAL.CUSTOM_EVENT.setDebugLog(response.status + '-' + response.url);
         return response;
     }
