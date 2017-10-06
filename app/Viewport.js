@@ -15,7 +15,7 @@ import CameraController from './components/camera';
 
 let styles = require('./config/styles');
 
-const testVideo = 'http://192.168.1.80:8080/?action=stream';
+const testVideo = GLOBAL.BASE_URL + ':8080/?action=stream';
 
 export default class Viewport extends Component {
     constructor(props) {

@@ -1,4 +1,12 @@
 import React, {Component} from 'react';
+import {
+    StyleSheet,
+    View,
+    Text,
+    PanResponder,
+    Animated,
+    Dimensions
+} from 'react-native'
 
 import Controller from '../controller';
 import styles from './styles'
@@ -21,6 +29,26 @@ export default class SteerController extends Controller {
             'updatedTime': new Date().getTime()
         };
 
+        this.panResponder = PanResponder.create({
+            onStartShouldSetPanResponder: () => true,
+            onPanResponderGrant: (e, gesture) => {
+                this.handleClick(e);
+            },
+            onPanResponderMove: (e, gesture) => {
+                this.move(gesture.dx, gesture.dy);
+                Animated.event([null, {
+                    dx: this.state.pan.x,
+                    dy: this.state.pan.y
+                }])(e, gesture);
+            },
+            onPanResponderRelease: (e, gesture) => {
+                this.stop()
+                Animated.spring(
+                    this.state.pan,
+                    { toValue:{ x:0, y:0 } }
+                ).start();
+            }
+        });
     }
 
     move(x, y) {

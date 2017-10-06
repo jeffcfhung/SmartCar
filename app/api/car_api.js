@@ -6,7 +6,7 @@ GLOBAL = require('../lib/globals');
 export default class CarApi extends Component {
     constructor(props) {
         super(props);
-        this.baseurl = 'http://192.168.1.80:8000';
+        this.baseurl = GLOBAL.BASE_URL + ':8000';
     }
 
     getImage() {
@@ -36,13 +36,13 @@ export default class CarApi extends Component {
 
     _checkStatus(response) {
         if (response.status >= 200 && response.status < 300) {
-            console.log(response.status + '-' + response.url);
+            console.log('[' + response.status + ']' + response.url);
         }
         else {
             console.log('[ERROR]' + response.status + ' ' + response.url);
         }
         // FIXME: Change to event observers
-        GLOBAL.CUSTOM_EVENT.setDebugLog(response.status + '-' + response.url);
+        GLOBAL.CUSTOM_EVENT.setDebugLog('[' + response.status + ']' + response.url);
         return response;
     }
 }

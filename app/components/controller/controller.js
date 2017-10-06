@@ -21,32 +21,12 @@ export default class Controller extends React.Component {
         };
 
         this.api = new CarApi();
-        this.panResponder = PanResponder.create({
-            onStartShouldSetPanResponder: () => true,
-            onPanResponderGrant: (e, gesture) => {
-                this.handleClick(e);
-            },
-            onPanResponderMove: (e, gesture) => {
-                this.move(gesture.dx, gesture.dy);
-                Animated.event([null, {
-                    dx: this.state.pan.x,
-                    dy: this.state.pan.y
-                }])(e, gesture);
-            },
-            onPanResponderRelease: (e, gesture) => {
-                this.stop()
-                Animated.spring(
-                    this.state.pan,
-                    { toValue:{ x:0, y:0 } }
-                ).start();
-            }
-        });
     }
 
     handleClick(e) {
         const now = new Date().getTime();
         console.log(now);
-        if (this.lastClick && (now - this.lastClick) < this.DOUBLE_CLICK_DELAY) {
+        if (this.lastClick && (now - this.lastClick) < this.DOUBLE_CLICK_DELAY)  {
             delete this.lastClick;
             this.handleDoubleClick(e);
         }
