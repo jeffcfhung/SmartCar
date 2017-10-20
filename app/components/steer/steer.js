@@ -51,6 +51,26 @@ export default class SteerController extends Controller {
         });
     }
 
+    // FIXME: Make set orientation easier
+    setOrientation(isPortrait) {
+        let CIRCLE_RADIUS = 36;
+        let Window = Dimensions.get('window');
+        if (isPortrait) {
+            this.styles.container = {
+                position    : 'absolute',
+                top: Window.height/2 - CIRCLE_RADIUS + 100,
+                left: Window.width/2 - CIRCLE_RADIUS
+            }
+        }
+        else {
+            this.styles.container = {
+                position    : 'absolute',
+                top         : Window.height/2 - CIRCLE_RADIUS + 100,
+                left        : Window.width/2 - CIRCLE_RADIUS + 250,
+            }
+        }
+    }
+
     move(x, y) {
         let toUpdateTime = 300; // milliseconds
         let now = new Date().getTime();

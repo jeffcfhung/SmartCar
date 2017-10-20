@@ -27,11 +27,11 @@ module.exports = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#374046'
+        backgroundColor: '#FFFFFF'
     },
     video: {
-        width: 350,
-        height: 470
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     debugLog: {
     },

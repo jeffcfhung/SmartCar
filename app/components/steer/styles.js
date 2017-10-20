@@ -6,13 +6,12 @@ import {
 } from 'react-native';
 
 let CIRCLE_RADIUS = 36;
-let CIRCLE_OFFSET_Y = 90;
 let Window = Dimensions.get('window');
 module.exports = StyleSheet.create({
     container: {
         position    : 'absolute',
-        top         : Window.height/2 - CIRCLE_RADIUS,
-        left        : Window.width/2 - CIRCLE_RADIUS,
+        top         : Window.height/2 - CIRCLE_RADIUS + 100,
+        left        : Window.width/2 - CIRCLE_RADIUS + 250,
     },
     text: {
         marginTop   : 20,

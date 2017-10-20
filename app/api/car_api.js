@@ -9,10 +9,6 @@ export default class CarApi extends Component {
         this.baseurl = GLOBAL.BASE_URL + ':8000';
     }
 
-    getImage() {
-        return null;
-    }
-
     sendCommand(cmd) {
         let url = this.baseurl + cmd;
         console.log(url);
@@ -20,13 +16,31 @@ export default class CarApi extends Component {
         this.fetchTimeout(1000, fetch(url))
             .then(this._checkStatus)
             .catch(e => {
-                GLOBAL.CUSTOM_EVENT.setDebugLog(e.toString());
+                GLOBAL.CUSTOM_EVENT.setDebugLog(url + ' ' + e.toString());
             })
     }
 
-    fetchTimeout(ms, promise) {
+    sendJsonCommand(cmd, callback, errorCallback) {
+        let url = this.baseurl + cmd;
+        console.log(url);
+
+        this.fetchTimeout(10000, fetch(url), errorCallback)
+            .then((response) => response.json())
+            .then(callback)
+            .catch(e => {
+                GLOBAL.CUSTOM_EVENT.setDebugLog(url + ' ' + e.toString());
+            })
+    }
+
+    fetchTimeout(ms, promise, errorCallback) {
         return new Promise(function(resolve, reject) {
             setTimeout(function() {
+                try {
+                    errorCallback();
+                }
+                catch(e){
+                    console.log('The request is timeout...');
+                }
                 reject(new Error('Response timeout'));
             }, ms)
 
@@ -42,7 +56,7 @@ export default class CarApi extends Component {
             console.log('[ERROR]' + response.status + ' ' + response.url);
         }
         // FIXME: Change to event observers
-        GLOBAL.CUSTOM_EVENT.setDebugLog('[' + response.status + ']' + response.url);
+        GLOBAL.CUSTOM_EVENT.setDebugLog('[' + response.status + ']' + response.url + '-');
         return response;
     }
 }

@@ -12,10 +12,9 @@ import {
 GLOBAL = require('./lib/globals');
 import SteerController from './components/steer';
 import CameraController from './components/camera';
+import FaceRecController from './components/face';
 
 let styles = require('./config/styles');
-
-const testVideo = GLOBAL.BASE_URL + ':8080/?action=stream';
 
 export default class Viewport extends Component {
     constructor(props) {
@@ -23,11 +22,28 @@ export default class Viewport extends Component {
 
         this.state = {
             debugLog: 'Messages',
+            isPortrait: true
+        }
+        this.logs = [];
+    }
+
+    onLayout(e) {
+        const {width, height} = Dimensions.get('window');
+        let isPortrait = height > width;
+        if (isPortrait) {
+            styles.video = [{
+                width: 320,
+                height: 240
+            }]
+        }
+        else {
+            styles.video = [{
+                width: 480,
+                height: 360
+            }]
         }
 
-        this.logs = [];
-        // TODO: Play video
-        //CarController.getVideo();
+        this.setState({isPortrait: isPortrait});
     }
 
     // FIXME: Apply observers instead of direct accesss. This is just quick hacking
@@ -46,32 +62,43 @@ export default class Viewport extends Component {
         GLOBAL.CUSTOM_EVENT.ViewPort.setState({debugLog: logs.join('\n')});
     }
 
-    formatHtml() {
-        return ('<html><body><img src="' + testVideo + '" width="100%" style="background-color: white; min-height: 100%; min-width: 100%; position: fixed; top: 0; left: 0;"></body></html>');
+    getVideoHtml() {
+        return ('<html><body><img src="' + GLOBAL.VIDEO_URL + '" width="100%" style="background-color: white; min-height: 100%; min-width: 100%; position: fixed; top: 0; left: 0;"></body></html>');
+    }
+
+    getDebugComponent() {
+        if (this.state.isPortrait) {
+            return (
+                <View style={styles.tabBar}>
+                    <Text>{this.state.debugLog}</Text>
+                </View>
+            );
+        }
     }
 
     render() {
         return (
-            <View style={styles.mainContainer}>
-                <View style={styles.navBar}>
+            <View onLayout={this.onLayout.bind(this)} style={styles.mainContainer}>
+                <View style={this.state.isPortrait && styles.navBar}>
                     <Text style={styles.navBarButton}>Back</Text>
                     <Text style={styles.navBarHeader}>Smart Car</Text>
                     <Text style={styles.navBarButton}>More</Text>
                 </View>
                 <View style={styles.content}>
-                    <WebView
-                       style={styles.video}
-                       automaticallyAdjustContentInsets={true}
-                       scalesPageToFit={true}
-                       startInLoadingState={false}
-                       scrollEnabled={false}
-                       source={{html: this.formatHtml(), baseUrl: '/'}} />
-                    <CameraController name='Camera Control' />
-                    <SteerController name='Steer Control' />
+                    <View style={styles.video}>
+                        <WebView
+                           style={styles.video}
+                           automaticallyAdjustContentInsets={true}
+                           scalesPageToFit={true}
+                           startInLoadingState={false}
+                           scrollEnabled={true}
+                           source={{html: this.getVideoHtml(), baseUrl: '/'}} />
+                        <FaceRecController name='Jeff' data={this.state} />
+                    </View>
+                    <CameraController name='Camera Control' data={this.state} />
+                    <SteerController name='Steer Control' data={this.state} />
                 </View>
-                <View style={styles.tabBar}>
-                    <Text style={styles.debugLog}>{this.state.debugLog}</Text>
-                </View>
+                {this.getDebugComponent()}
                 {/*}
                 <View style={styles.tabBar}>
                     <View style={[styles.tabBarButton, styles.button1]} />

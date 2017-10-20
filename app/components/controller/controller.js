@@ -9,7 +9,6 @@ import {
 } from 'react-native'
 
 import CarApi from '../../api/car_api'
-import styles from './styles'
 
 export default class Controller extends React.Component {
     DOUBLE_CLICK_DELAY = 300;
@@ -17,7 +16,7 @@ export default class Controller extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            pan: new Animated.ValueXY(),
+            pan: new Animated.ValueXY()
         };
 
         this.api = new CarApi();
@@ -25,7 +24,6 @@ export default class Controller extends React.Component {
 
     handleClick(e) {
         const now = new Date().getTime();
-        console.log(now);
         if (this.lastClick && (now - this.lastClick) < this.DOUBLE_CLICK_DELAY)  {
             delete this.lastClick;
             this.handleDoubleClick(e);
@@ -39,9 +37,15 @@ export default class Controller extends React.Component {
 
     }
 
+    setOrientation(isPortrait) {
+        this._NOT_IMPLEMENT_ERROR('setOrientation');
+    }
+
     render() {
+        console.log(this.props.data.isPortrait);
+        this.setOrientation(this.props.data.isPortrait);
         return (
-            <View style={this.styles.container}>
+            <View style={[this.styles.container]}>
                 <Animated.View {...this.panResponder.panHandlers}
                         style={[this.state.pan.getLayout(), this.styles.circle]}>
                     <Text style={this.styles.text}>{this.props.name}</Text>
