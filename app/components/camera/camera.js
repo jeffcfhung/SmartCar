@@ -11,13 +11,9 @@ import {
 import Controller from '../controller';
 
 export default class CameraController extends Controller {
-    INCREASE_X  = '/camera/increase/x/'
-    INCREASE_Y  = '/camera/increase/y/'
-    DECREASE_X  = '/camera/decrease/x/'
-    DECREASE_Y  = '/camera/decrease/y/'
-    MOVE_X      = '/camera/x/'
-    MOVE_Y      = '/camera/y/'
-    HOME        = '/camera/home'
+    MOVE_X     = '/camera/x/'
+    MOVE_Y     = '/camera/y/'
+    HOME       = '/camera/home'
 
     constructor(props) {
         super(props);

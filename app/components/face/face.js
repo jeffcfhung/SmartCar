@@ -20,20 +20,21 @@ export default class FaceRecController extends React.Component {
         this.state = {
             top:    0,
             left:   0,
-            width:  0,
-            height: 0
+            width:  100,
+            height: 100
         };
 
         this.styles = require('./styles');
         this.isFailing = false;
-        this.xRatio = Window.width/640.0;
-        this.yRatio = Window.height/480.0;
+        this.xRatio = Window.width/400.0;
+        this.yRatio = Window.height/300.0;
     }
 
     componentDidMount() {
         this.api = new CarApi();
         // FIXME: This is a hack to do fast prototyping
         this.api.baseurl = GLOBAL.ML_URL + ':5000';
+        this.findFacePosition()
         //this.timer = setInterval(this.findFacePosition.bind(this), 1000);
     }
 
@@ -62,10 +63,10 @@ export default class FaceRecController extends React.Component {
         // FIXME: Multiple faces location
         console.log(responseData);
         if (responseData.length > 0) {
-            let top = responseData[0][0]*this.yRatio;
-            let left = responseData[0][1]*this.xRatio;
-            let height = responseData[0][2]*this.yRatio - top;
-            let width = left - responseData[0][3]*this.xRatio;
+            let top = parseInt(responseData[0][0]*this.yRatio);
+            let left = parseInt(responseData[0][1]*this.xRatio);
+            let height = parseInt(responseData[0][2]*this.yRatio - top);
+            let width = parseInt(left - responseData[0][3]*this.xRatio);
             this.setState({
                 top: top,
                 left: left,

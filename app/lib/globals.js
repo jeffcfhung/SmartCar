@@ -6,7 +6,8 @@ if (MOCK) {
     VIDEO_URL = BASE_URL + ':8000/static/img.jpg';
 }
 else {
-    BASE_URL = 'http://192.168.1.80';
+    //BASE_URL = 'http://192.168.1.80';
+    BASE_URL = 'http://10.42.0.1';
     VIDEO_URL = BASE_URL + ':8080/?action=stream';
 }
 module.exports = {

@@ -1,3 +1,3 @@
-import CameraController from './camera';
+import CameraController from './camera'
 
-export default CameraController;
+export default CameraController

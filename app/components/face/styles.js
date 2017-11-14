@@ -11,7 +11,7 @@ module.exports = StyleSheet.create({
     },
     text: {
         textAlign   : 'center',
-        color       : '#fff'
+        color       : 'black'
     },
     rect: {
         opacity             : 0.7,

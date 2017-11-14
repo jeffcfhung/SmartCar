@@ -32,8 +32,8 @@ export default class Viewport extends Component {
         let isPortrait = height > width;
         if (isPortrait) {
             styles.video = [{
-                width: 320,
-                height: 240
+                width: 400,
+                height: 300
             }]
         }
         else {
