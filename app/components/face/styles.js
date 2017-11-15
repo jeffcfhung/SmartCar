@@ -10,12 +10,13 @@ module.exports = StyleSheet.create({
         position    : 'absolute',
     },
     text: {
-        textAlign   : 'center',
-        color       : 'black'
+        textAlign: 'center',
+        color: 'black',
+        backgroundColor: 'grey',
     },
     rect: {
         opacity             : 0.7,
-        borderWidth         : 3,
+        borderWidth         : 1,
         borderColor         : 'red'
     }
 })

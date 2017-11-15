@@ -26,8 +26,10 @@ export default class FaceRecController extends React.Component {
 
         this.styles = require('./styles');
         this.isFailing = false;
-        this.xRatio = Window.width/400.0;
-        this.yRatio = Window.height/300.0;
+
+        // This ratio comes from mapping of image pixels and display area
+        this.xRatio = 400.0/640.0;
+        this.yRatio = 300.0/480.0;
     }
 
     componentDidMount() {
@@ -35,7 +37,7 @@ export default class FaceRecController extends React.Component {
         // FIXME: This is a hack to do fast prototyping
         this.api.baseurl = GLOBAL.ML_URL + ':5000';
         this.findFacePosition()
-        //this.timer = setInterval(this.findFacePosition.bind(this), 1000);
+        this.timer = setInterval(this.findFacePosition.bind(this), 1000);
     }
 
     findFacePosition() {
@@ -62,11 +64,21 @@ export default class FaceRecController extends React.Component {
     facePositionFound(responseData) {
         // FIXME: Multiple faces location
         console.log(responseData);
+        /*
+        The node coordiation is (y1, x1, y2, x2)
+        We need to trasfer them to hight and width per ratio
+        (y-0)/300 = (y1-0)/480 => y = y1*300/480 = y1*this.yRatio
+        (x-0)/400 = (x1-0)/640 => x = x1*400/640 = x1*this.xRatio
+        height = (y2-y1)*this.yRatio
+        width = (x2-x1)*this.xRatio
+        */
+
         if (responseData.length > 0) {
-            let top = parseInt(responseData[0][0]*this.yRatio);
-            let left = parseInt(responseData[0][1]*this.xRatio);
-            let height = parseInt(responseData[0][2]*this.yRatio - top);
-            let width = parseInt(left - responseData[0][3]*this.xRatio);
+            const node = responseData[0];
+            const top = parseInt(node[0]*this.yRatio);
+            const left = parseInt(node[1]*this.xRatio);
+            const height = parseInt((node[2]-node[0])*this.yRatio);
+            const width = parseInt((node[3]-node[1])*this.xRatio);
             this.setState({
                 top: top,
                 left: left,
