@@ -1,5 +1,6 @@
 // TODO: Move to observor patteren. This is a quick hack.
-MOCK = true;
+MOCK = false;
+//MOCK = true;
 
 if (MOCK) {
     BASE_URL = 'http://localhost';
@@ -13,6 +14,7 @@ else {
 module.exports = {
     BASE_URL: BASE_URL,
     VIDEO_URL: VIDEO_URL,
-    ML_URL: 'http://192.168.56.101',
+    //ML_URL: 'http://192.168.56.101',
+    ML_URL: 'http://10.42.0.229',
     CUSTOM_EVENT: {},
 };

@@ -1,3 +1,3 @@
-import AaaController from './face';
+import FaceRecController from './face';
 
-export default AaaController;
+export default FaceRecController

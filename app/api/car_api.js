@@ -13,7 +13,7 @@ export default class CarApi extends Component {
         let url = this.baseurl + cmd;
         console.log(url);
 
-        this.fetchTimeout(1000, fetch(url))
+        this.fetchTimeout(18000, fetch(url))
             .then(this._checkStatus)
             .catch(e => {
                 GLOBAL.CUSTOM_EVENT.setDebugLog(url + ' ' + e.toString());

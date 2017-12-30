@@ -1,42 +1,33 @@
-import React, {Component} from 'react';
-import {
-    View,
-    Text,
-    PanResponder,
-    Animated,
-    Dimensions,
-    Image,
-    WebView
-} from 'react-native'
+import React, {Component} from 'react'
+import {View, Text, Dimensions, WebView} from 'react-native'
 
-GLOBAL = require('./lib/globals');
-import SteerController from './components/steer';
-import CameraController from './components/camera';
-import FaceRecController from './components/face';
+import SteerController from './components/steer'
+import CameraController from './components/camera'
+import FaceRecController from './components/face'
+const GLOBAL = require('./lib/globals')
 
-let styles = require('./config/styles');
+const styles = require('./config/styles')
 
 export default class Viewport extends Component {
     constructor(props) {
-        super(props);
+        super(props)
 
         this.state = {
             debugLog: 'Messages',
             isPortrait: true
         }
-        this.logs = [];
+        this.logs = []
     }
 
     onLayout(e) {
         const {width, height} = Dimensions.get('window');
-        let isPortrait = height > width;
+        const isPortrait = height > width;
         if (isPortrait) {
             styles.video = [{
                 width: 400,
                 height: 300
             }]
-        }
-        else {
+        } else {
             styles.video = [{
                 width: 480,
                 height: 360
@@ -54,10 +45,10 @@ export default class Viewport extends Component {
 
     setDebugLog(log) {
         log = new Date().toISOString().replace(/.*T/, ' ').replace(/Z.*/, ' ') + log;
-        let logs = GLOBAL.CUSTOM_EVENT.ViewPort.logs;
+        const logs = GLOBAL.CUSTOM_EVENT.ViewPort.logs;
         logs.unshift(log);
         if (logs.length > 4) {
-            logs.splice(-1,1);
+            logs.splice(-1, 1);
         }
         GLOBAL.CUSTOM_EVENT.ViewPort.setState({debugLog: logs.join('\n')});
     }
@@ -68,11 +59,9 @@ export default class Viewport extends Component {
 
     getDebugComponent() {
         if (this.state.isPortrait) {
-            return (
-                <View style={styles.tabBar}>
-                    <Text>{this.state.debugLog}</Text>
-                </View>
-            );
+            return (<View style={styles.tabBar}>
+                <Text>{this.state.debugLog}</Text>
+            </View>)
         }
     }
 
@@ -86,29 +75,25 @@ export default class Viewport extends Component {
                 </View>
                 <View style={styles.content}>
                     <View style={styles.video}>
-                        <WebView
-                           style={styles.video}
-                           automaticallyAdjustContentInsets={true}
-                           scalesPageToFit={true}
-                           startInLoadingState={false}
-                           scrollEnabled={true}
-                           source={{html: this.getVideoHtml(), baseUrl: '/'}} />
-                        <FaceRecController name='Jeff' data={this.state} />
+                        <WebView style={styles.video} automaticallyAdjustContentInsets={true} scalesPageToFit={true} startInLoadingState={false} scrollEnabled={true} source={{
+                                html: this.getVideoHtml(),
+                                baseUrl: '/'
+                            }}/>
+                        <FaceRecController name='Jeff' data={this.state}/>
                     </View>
-                    <CameraController name='Camera Control' data={this.state} />
-                    <SteerController name='Steer Control' data={this.state} />
+                    <CameraController name='Camera Control' data={this.state}/>
+                    <SteerController name='Steer Control' data={this.state}/>
                 </View>
                 {this.getDebugComponent()}
                 {/*}
-                <View style={styles.tabBar}>
-                    <View style={[styles.tabBarButton, styles.button1]} />
-                    <View style={[styles.tabBarButton, styles.button2]} />
-                    <View style={[styles.tabBarButton, styles.button3]} />
-                    <View style={[styles.tabBarButton, styles.button4]} />
-                    <View style={[styles.tabBarButton, styles.button5]} />
-                </View>
-                {*/}
-            </View>
-        );
+                    <View style={styles.tabBar}>
+                        <View style={[styles.tabBarButton, styles.button1]}/>
+                        <View style={[styles.tabBarButton, styles.button2]}/>
+                        <View style={[styles.tabBarButton, styles.button3]}/>
+                        <View style={[styles.tabBarButton, styles.button4]}/>
+                        <View style={[styles.tabBarButton, styles.button5]}/>
+                    </View>
+                { */}
+            </View >)
+        }
     }
-}
