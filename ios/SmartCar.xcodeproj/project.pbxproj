@@ -35,6 +35,14 @@
 		2D02E4C91E0B4AEC006451C7 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* SmartCarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SmartCarTests.m */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
+		5FF3DA421FFF108200EBE5E1 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FF3DA401FFF108200EBE5E1 /* Interface.storyboard */; };
+		5FF3DA441FFF108200EBE5E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FF3DA431FFF108200EBE5E1 /* Assets.xcassets */; };
+		5FF3DA4B1FFF108300EBE5E1 /* SmartCarWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5FF3DA4A1FFF108300EBE5E1 /* SmartCarWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5FF3DA501FFF108300EBE5E1 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF3DA4F1FFF108300EBE5E1 /* InterfaceController.swift */; };
+		5FF3DA521FFF108300EBE5E1 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF3DA511FFF108300EBE5E1 /* ExtensionDelegate.swift */; };
+		5FF3DA541FFF108300EBE5E1 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF3DA531FFF108300EBE5E1 /* NotificationController.swift */; };
+		5FF3DA561FFF108300EBE5E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FF3DA551FFF108300EBE5E1 /* Assets.xcassets */; };
+		5FF3DA5B1FFF108300EBE5E1 /* SmartCarWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 5FF3DA3E1FFF108200EBE5E1 /* SmartCarWatch.app */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 /* End PBXBuildFile section */
 
@@ -214,6 +222,20 @@
 			remoteGlobalIDString = 2D2A28201D9B03D100D4039D;
 			remoteInfo = "RCTAnimation-tvOS";
 		};
+		5FF3DA4C1FFF108300EBE5E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5FF3DA491FFF108300EBE5E1;
+			remoteInfo = "SmartCarWatch Extension";
+		};
+		5FF3DA591FFF108300EBE5E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5FF3DA3D1FFF108200EBE5E1;
+			remoteInfo = SmartCarWatch;
+		};
 		78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
@@ -229,6 +251,31 @@
 			remoteInfo = RCTText;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5FF3DA7A1FFF108300EBE5E1 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5FF3DA4B1FFF108300EBE5E1 /* SmartCarWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FF3DA7C1FFF108300EBE5E1 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				5FF3DA5B1FFF108300EBE5E1 /* SmartCarWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTActionSheet.xcodeproj; path = "../node_modules/react-native/Libraries/ActionSheetIOS/RCTActionSheet.xcodeproj"; sourceTree = "<group>"; };
@@ -252,6 +299,17 @@
 		2D02E47B1E0B4A5D006451C7 /* SmartCar-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SmartCar-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* SmartCar-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SmartCar-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
+		5FF3DA3E1FFF108200EBE5E1 /* SmartCarWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartCarWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FF3DA411FFF108200EBE5E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		5FF3DA431FFF108200EBE5E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5FF3DA451FFF108200EBE5E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FF3DA4A1FFF108300EBE5E1 /* SmartCarWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "SmartCarWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FF3DA4F1FFF108300EBE5E1 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		5FF3DA511FFF108300EBE5E1 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		5FF3DA531FFF108300EBE5E1 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		5FF3DA551FFF108300EBE5E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5FF3DA571FFF108300EBE5E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FF3DA581FFF108300EBE5E1 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -299,6 +357,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2D02E48D1E0B4A5D006451C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FF3DA471FFF108300EBE5E1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -422,6 +487,29 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		5FF3DA3F1FFF108200EBE5E1 /* SmartCarWatch */ = {
+			isa = PBXGroup;
+			children = (
+				5FF3DA401FFF108200EBE5E1 /* Interface.storyboard */,
+				5FF3DA431FFF108200EBE5E1 /* Assets.xcassets */,
+				5FF3DA451FFF108200EBE5E1 /* Info.plist */,
+			);
+			path = SmartCarWatch;
+			sourceTree = "<group>";
+		};
+		5FF3DA4E1FFF108300EBE5E1 /* SmartCarWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				5FF3DA4F1FFF108300EBE5E1 /* InterfaceController.swift */,
+				5FF3DA511FFF108300EBE5E1 /* ExtensionDelegate.swift */,
+				5FF3DA531FFF108300EBE5E1 /* NotificationController.swift */,
+				5FF3DA551FFF108300EBE5E1 /* Assets.xcassets */,
+				5FF3DA571FFF108300EBE5E1 /* Info.plist */,
+				5FF3DA581FFF108300EBE5E1 /* PushNotificationPayload.apns */,
+			);
+			path = "SmartCarWatch Extension";
+			sourceTree = "<group>";
+		};
 		78C398B11ACF4ADC00677621 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -464,6 +552,8 @@
 				13B07FAE1A68108700A75B9A /* SmartCar */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* SmartCarTests */,
+				5FF3DA3F1FFF108200EBE5E1 /* SmartCarWatch */,
+				5FF3DA4E1FFF108300EBE5E1 /* SmartCarWatch Extension */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 			);
 			indentWidth = 2;
@@ -477,6 +567,8 @@
 				00E356EE1AD99517003FC87E /* SmartCarTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* SmartCar-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* SmartCar-tvOSTests.xctest */,
+				5FF3DA3E1FFF108200EBE5E1 /* SmartCarWatch.app */,
+				5FF3DA4A1FFF108300EBE5E1 /* SmartCarWatch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -510,10 +602,12 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				5FF3DA7C1FFF108300EBE5E1 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5FF3DA5A1FFF108300EBE5E1 /* PBXTargetDependency */,
 			);
 			name = SmartCar;
 			productName = "Hello World";
@@ -556,12 +650,47 @@
 			productReference = 2D02E4901E0B4A5D006451C7 /* SmartCar-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		5FF3DA3D1FFF108200EBE5E1 /* SmartCarWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5FF3DA7B1FFF108300EBE5E1 /* Build configuration list for PBXNativeTarget "SmartCarWatch" */;
+			buildPhases = (
+				5FF3DA3C1FFF108200EBE5E1 /* Resources */,
+				5FF3DA7A1FFF108300EBE5E1 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5FF3DA4D1FFF108300EBE5E1 /* PBXTargetDependency */,
+			);
+			name = SmartCarWatch;
+			productName = SmartCarWatch;
+			productReference = 5FF3DA3E1FFF108200EBE5E1 /* SmartCarWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		5FF3DA491FFF108300EBE5E1 /* SmartCarWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5FF3DA791FFF108300EBE5E1 /* Build configuration list for PBXNativeTarget "SmartCarWatch Extension" */;
+			buildPhases = (
+				5FF3DA461FFF108300EBE5E1 /* Sources */,
+				5FF3DA471FFF108300EBE5E1 /* Frameworks */,
+				5FF3DA481FFF108300EBE5E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SmartCarWatch Extension";
+			productName = "SmartCarWatch Extension";
+			productReference = 5FF3DA4A1FFF108300EBE5E1 /* SmartCarWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
@@ -583,6 +712,16 @@
 						DevelopmentTeam = 7YGKL9HGAH;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2D02E47A1E0B4A5D006451C7;
+					};
+					5FF3DA3D1FFF108200EBE5E1 = {
+						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = 7YGKL9HGAH;
+						ProvisioningStyle = Automatic;
+					};
+					5FF3DA491FFF108300EBE5E1 = {
+						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = 7YGKL9HGAH;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -649,6 +788,8 @@
 				00E356ED1AD99517003FC87E /* SmartCarTests */,
 				2D02E47A1E0B4A5D006451C7 /* SmartCar-tvOS */,
 				2D02E48F1E0B4A5D006451C7 /* SmartCar-tvOSTests */,
+				5FF3DA3D1FFF108200EBE5E1 /* SmartCarWatch */,
+				5FF3DA491FFF108300EBE5E1 /* SmartCarWatch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -863,6 +1004,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5FF3DA3C1FFF108200EBE5E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FF3DA441FFF108200EBE5E1 /* Assets.xcassets in Resources */,
+				5FF3DA421FFF108200EBE5E1 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FF3DA481FFF108300EBE5E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FF3DA561FFF108300EBE5E1 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -931,6 +1089,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5FF3DA461FFF108300EBE5E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FF3DA541FFF108300EBE5E1 /* NotificationController.swift in Sources */,
+				5FF3DA521FFF108300EBE5E1 /* ExtensionDelegate.swift in Sources */,
+				5FF3DA501FFF108300EBE5E1 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -944,6 +1112,16 @@
 			target = 2D02E47A1E0B4A5D006451C7 /* SmartCar-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
+		5FF3DA4D1FFF108300EBE5E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5FF3DA491FFF108300EBE5E1 /* SmartCarWatch Extension */;
+			targetProxy = 5FF3DA4C1FFF108300EBE5E1 /* PBXContainerItemProxy */;
+		};
+		5FF3DA5A1FFF108300EBE5E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5FF3DA3D1FFF108200EBE5E1 /* SmartCarWatch */;
+			targetProxy = 5FF3DA591FFF108300EBE5E1 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -954,6 +1132,14 @@
 			);
 			name = LaunchScreen.xib;
 			path = SmartCar;
+			sourceTree = "<group>";
+		};
+		5FF3DA401FFF108200EBE5E1 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5FF3DA411FFF108200EBE5E1 /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1135,6 +1321,154 @@
 			};
 			name = Release;
 		};
+		5FF3DA5C1FFF108300EBE5E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 7YGKL9HGAH;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IBSC_MODULE = SmartCarWatch_Extension;
+				INFOPLIST_FILE = SmartCarWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.SmartCar.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.2;
+			};
+			name = Debug;
+		};
+		5FF3DA5D1FFF108300EBE5E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 7YGKL9HGAH;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IBSC_MODULE = SmartCarWatch_Extension;
+				INFOPLIST_FILE = SmartCarWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.SmartCar.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.2;
+			};
+			name = Release;
+		};
+		5FF3DA5E1FFF108300EBE5E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 7YGKL9HGAH;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "SmartCarWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.SmartCar.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.2;
+			};
+			name = Debug;
+		};
+		5FF3DA5F1FFF108300EBE5E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 7YGKL9HGAH;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "SmartCarWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.SmartCar.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.2;
+			};
+			name = Release;
+		};
 		83CBBA201A601CBA00E9B192 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1246,6 +1580,24 @@
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
 				2D02E49A1E0B4A5E006451C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5FF3DA791FFF108300EBE5E1 /* Build configuration list for PBXNativeTarget "SmartCarWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FF3DA5E1FFF108300EBE5E1 /* Debug */,
+				5FF3DA5F1FFF108300EBE5E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5FF3DA7B1FFF108300EBE5E1 /* Build configuration list for PBXNativeTarget "SmartCarWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FF3DA5C1FFF108300EBE5E1 /* Debug */,
+				5FF3DA5D1FFF108300EBE5E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
