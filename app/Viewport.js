@@ -93,7 +93,7 @@ export default class Viewport extends Component {
                            startInLoadingState={false}
                            scrollEnabled={true}
                            source={{html: this.getVideoHtml(), baseUrl: '/'}} />
-                        <FaceRecController name='Jeff' data={this.state} />
+                        <FaceRecController name='Unknown' data={this.state} />
                     </View>
                     <CameraController name='Camera Control' data={this.state} />
                     <SteerController name='Steer Control' data={this.state} />

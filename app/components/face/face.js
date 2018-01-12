@@ -12,17 +12,20 @@ import CarApi from '../../api/car_api'
 
 let GLOBAL = require('../../lib/globals');
 let Window = Dimensions.get('window');
+let timeInterval = 1000;
 
 export default class FaceRecController extends React.Component {
-    FAIL_DELAY = 5000;
+    FAIL_DELAY = 12000;
     constructor(props) {
         super(props);
-        this.state = {
+        this.defaultState = {
             top:    0,
             left:   0,
             width:  100,
-            height: 100
+            height: 100,
+            name:   'Not found'
         };
+        this.state = this.defaultState;
 
         this.styles = require('./styles');
         this.isFailing = false;
@@ -37,7 +40,8 @@ export default class FaceRecController extends React.Component {
         // FIXME: This is a hack to do fast prototyping
         this.api.baseurl = GLOBAL.ML_URL + ':5000';
         this.findFacePosition()
-        this.timer = setInterval(this.findFacePosition.bind(this), 1000);
+        this.timer = setInterval(this.findFacePosition.bind(this), timeInterval);
+        console.log('timeInterval... %d' + timeInterval);
     }
 
     findFacePosition() {
@@ -46,6 +50,7 @@ export default class FaceRecController extends React.Component {
         if (this.isFailing) {
             if (this.sendTime && (now - this.sendTime) < this.FAIL_DELAY) {
                 console.log('ML connection fallback...');
+                timeInterval = 10000;
                 return;
             }
         }
@@ -55,6 +60,7 @@ export default class FaceRecController extends React.Component {
             this.errorCallback.bind(this)
         );
         this.sendTime = now;
+        timeInterval = 1000;
     }
 
     errorCallback() {
@@ -73,24 +79,33 @@ export default class FaceRecController extends React.Component {
         width = (x2-x1)*this.xRatio
         */
 
-        if (responseData.length > 0) {
-            const node = responseData[0];
-            const top = parseInt(node[0]*this.yRatio);
-            const left = parseInt(node[1]*this.xRatio);
-            const height = parseInt((node[2]-node[0])*this.yRatio);
-            const width = parseInt((node[3]-node[1])*this.xRatio);
+        const positions = responseData.positions;
+        console.log(positions);
+        const face_names = responseData['face_names'];
+
+        // top, right, bottom, left
+        if (positions.length > 0) {
+            const node = positions[0];
+            const top = parseInt(node[0]*this.yRatio) - 20;
+            const left = parseInt(node[3]*this.xRatio);
+            const height = parseInt((node[2]-node[0])*this.yRatio) + 20;
+            const width = parseInt((node[1]-node[3])*this.xRatio);
             this.setState({
                 top: top,
                 left: left,
                 height: height,
-                width: width
+                width: width,
+                name: face_names[0]
             });
             GLOBAL.CUSTOM_EVENT.setDebugLog(
-                top + ',' +
+                face_names[0] + ' : ' + top + ',' +
                 left + ',' +
                 height + ',' +
                 width
             );
+        }
+        else {
+            this.setState(this.defaultState);
         }
         this.isFailing = false;
         return responseData;
@@ -104,7 +119,7 @@ export default class FaceRecController extends React.Component {
         return (
             <View style={[this.styles.container, {top: this.state.top, left: this.state.left}]}>
                 <View style={[this.styles.rect, {width: this.state.width, height: this.state.height}]}>
-                    <Text style={this.styles.text}>{this.props.name}</Text>
+                    <Text style={this.styles.text}>{this.state.name}</Text>
                 </View>
             </View>
         );
